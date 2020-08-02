@@ -1,11 +1,12 @@
 extends layout
 
 block content
-    h1= title
+
+    h1= title   
 
     form(method='POST' action='')
-        label(for='secretPassword')
-        input(name='secretPassword' id='secretPassword' required=true type='text')
+        label(for='adminPassword')
+        input(name='adminPassword' id='adminPassword' required=true type='text')
         button(type='submit') submit
     
     if errors

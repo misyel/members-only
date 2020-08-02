@@ -14,6 +14,8 @@ router.get('/login', userController.loginGet);
 router.post('/login', userController.loginPost);
 router.get('/new-member', userController.userLoggedIn, userController.userBecomeMemberGet);
 router.post('/new-member', userController.userBecomeMemberPost);
+router.get('/admin', userController.userLoggedIn, userController.adminGet);
+router.post('/admin', userController.adminPost);
 
 //message routes
 router.get('/new-message', userController.userLoggedIn, messageController.newMessageGet);

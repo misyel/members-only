@@ -1,3 +1,4 @@
+require('dotenv').config()
 const User = require('../models/users');
 const Message = require('../models/messages');
 const { body,validationResult } = require('express-validator/check');
@@ -23,7 +24,6 @@ exports.signupGet = (req, res) => {
 };
 
 exports.signupPost = [
-    //res.send('not implemented sign up post')
 
     //validate form fields
     body('firstName').isLength({min: 1}).trim().withMessage('first name is required'),
@@ -114,6 +114,75 @@ exports.userBecomeMemberGet = (req, res, next) => {
 }
 
 //membership post
-exports.userBecomeMemberPost = (req, res, next) => {
-    res.send('member post')
+exports.userBecomeMemberPost = [
+
+    //validate 
+    body('secretPassword').custom((value) => {
+        if (value !== process.env.MEM_PASSWORD) {
+            throw new Error('incorrect password');
+        }
+        return true;
+    }),
+
+    //sanitize
+    sanitizeBody('secretPassword').escape(),
+
+    (req, res, next) => {
+
+        //get errors
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){
+            res.render('memberForm', {title: 'become a member', errors: errors.array()})
+        }
+
+        //res.send('successful')
+
+        //update membership status 
+        User.findByIdAndUpdate(req.user, {membership: true}, function(err){
+            if(err){return next(err)};
+
+            //redirect home if successful
+            res.redirect('/')
+        })
+    }
+]
+
+//admin get
+exports.adminGet = (req, res, next) => {
+    res.render('adminForm', {title: 'become an admin'});
 }
+
+//admin post
+exports.adminPost = [
+
+    //validate
+    body('adminPassword').custom((value) => {
+        if(value !== process.env.ADMIN_PASSWORD){
+            throw new Error('incorrect password')
+        }
+        return true;
+    }),
+
+    //sanitize
+    body('adminPassword').escape(),
+
+    
+    (req, res, next) => {
+
+        //get errors
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){
+            res.render('adminForm', {title: 'become an admin', errors: errors.array()})
+        }
+
+        //find user and update admin status
+        User.findByIdAndUpdate(req.user, {admin: true}, function(err){
+            if(err){return next(err)};
+
+            res.redirect('/');
+        })
+    }
+    
+]

@@ -10,12 +10,12 @@ block content
 
     if user.membership
       each message in messages
-        p #{message.message} by #{message.user.username}
+        p #{message.message} by #{message.user.username} on #{message.date}
       else
         p no messages
     
-  
-  each message in messages
-    p #{message.message} by *********
-  else 
-    p no messages
+  else
+    each message in messages
+      p #{message.message} by *********
+    else 
+      p no messages
