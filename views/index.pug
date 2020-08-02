@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  
+  h1 hello
+  if user
+    a(href='new-message') new message 
+    br
+    a(href='new-member') become a member
+
+    if user.membership
+      each message in messages
+        p #{message.message} by #{message.user.username}
+      else
+        p no messages
+    
+  
+  each message in messages
+    p #{message.message} by *********
+  else 
+    p no messages

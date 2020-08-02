@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+    form(method='POST', action='')
+        label(for='firstName') first name:
+        input(name='firstName' type='text' required=true value=(underfined===user ? '': user.firstName))
+        label(for='lastName') last name:
+        input(name='lastName' type='text' required=true value=(underfined===user ? '': user.lastName))
+        label(for='username') username:
+        input(name='username' type='text' required=true value=(underfined===user ? '': user.username))
+        label(for='password') password:
+        input(name='password' type='text' required=true)
+        label(for='password') confirm password:
+        input(name='confirmPassword' type='text' required=true)
+        button(type='submit') submit
+
+    if errors 
+        ul
+            for error in errors
+                li!= error.msg
