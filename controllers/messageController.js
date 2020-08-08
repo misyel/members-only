@@ -46,3 +46,16 @@ exports.newMessagePost = [
         })
     }
 ]
+
+//delete message post
+exports.deleteMessage = (req, res, next) => {
+    //res.send(req.params.id);
+
+    //find message and remove
+    Message.findByIdAndRemove(req.params.id, function(err){
+        if(err){return next(err)}
+
+        //redirect if successful
+        res.redirect('/');
+    })
+}

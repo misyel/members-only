@@ -2,12 +2,14 @@ extends layout
 
 block content
 
-    h1= title   
-
-    form(method='POST' action='')
-        label(for='adminPassword')
-        input(name='adminPassword' id='adminPassword' required=true type='text')
-        button(type='submit') submit
+    div(class='container')
+        form(class='inputForm' method='POST' action='')
+            h3 become an admin
+            h4 enter the secret password!
+            fieldset
+                label(for='adminPassword') secret password:
+                input(name='adminPassword' id='adminPassword' placeholder='secret password' required=true type='text')
+            button(type='submit') submit
     
     if errors
         for error in errors

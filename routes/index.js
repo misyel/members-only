@@ -16,10 +16,15 @@ router.get('/new-member', userController.userLoggedIn, userController.userBecome
 router.post('/new-member', userController.userBecomeMemberPost);
 router.get('/admin', userController.userLoggedIn, userController.adminGet);
 router.post('/admin', userController.adminPost);
+router.get('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/');
+})
 
 //message routes
 router.get('/new-message', userController.userLoggedIn, messageController.newMessageGet);
-router.post('/new-message', messageController.newMessagePost)
+router.post('/new-message', messageController.newMessagePost);
+router.post('/delete-message/:id', messageController.deleteMessage);
 
 
 

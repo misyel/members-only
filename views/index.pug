@@ -1,21 +1,37 @@
 extends layout
 
-block content
-  
-  h1 hello
+block navigation
   if user
-    a(href='new-message') new message 
-    br
-    a(href='new-member') become a member
+    li
+      a(href='/new-message' class='navLink') new message 
+    li
+      a(href='/new-member' class='navLink') become a member
+    li
+      a(href='/logout' class='navLink') logout
+  else
+    li
+      a(href='/sign-up' class='navLink') signup
+    li 
+      a(href='/login' class='navLink') login
 
+block content 
+  h1 home
+  if user
     if user.membership
       each message in messages
+        h2 #{message.title}
         p #{message.message} by #{message.user.username} on #{message.date}
-      else
-        p no messages
+        if user.admin
+          form(method='POST', action=`/delete-message/${message.id}`)
+            input(type='hidden' name='deleteMessage' value=message.id)
+            button(type='submit') delete
+      else 
+        p no messages, add some!
     
   else
     each message in messages
       p #{message.message} by *********
     else 
       p no messages
+
+  

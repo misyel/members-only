@@ -1,17 +1,21 @@
 extends layout
 
 block content
-    h1= title
 
-    form(method='POST', action='')
-        label(for='title') title:
-        input(name='title' id='title' type='text' required=true value=(underfined===message ? '': message.title))
-        label(for='message') message:
-        input(name='message' id='message' type='text' required=true value=(underfined===message ? '': message.message))
-        button(type='submit') submit
+    div(class='container')
+        form(class='inputForm' method='POST', action='')
+            h3 new message
+            h4 enter your message below!
+            fieldset
+                label(for='title') title:
+                input(name='title' id='title' type='text' required=true value=(underfined===message ? '': message.title))
+            fieldset
+                label(for='message') message:
+                input(name='message' id='message' type='text' required=true value=(underfined===message ? '': message.message))
+            button(type='submit') submit
 
-    
-    if errors 
-        ul
-            for error in errors
-                li!= error.msg 
+        
+        if errors 
+            ul
+                for error in errors
+                    li!= error.msg 
