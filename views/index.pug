@@ -15,22 +15,33 @@ block navigation
       a(href='/login' class='navLink') login
 
 block content 
-  h1 home
+  h1(class='title') *very* secret messages
   if user
     if user.membership
       each message in messages
-        h2 #{message.title}
-        p #{message.message} by #{message.user.username} on #{message.date}
-        if user.admin
-          form(method='POST', action=`/delete-message/${message.id}`)
-            input(type='hidden' name='deleteMessage' value=message.id)
-            button(type='submit') delete
+        div(class='wrapper')
+          section(class='card')
+            div(class='info')
+              h2 #{message.title}
+              p #{message.message} 
+              p 
+                strong by #{message.user.username} on #{message.date}
+              if user.admin
+                form(method='POST', action=`/delete-message/${message.id}`)
+                  input(type='hidden' name='deleteMessage' value=message.id)
+                  button(type='submit' class='delete') delete
       else 
         p no messages, add some!
     
   else
     each message in messages
-      p #{message.message} by *********
+      div(class='wrapper')
+        section(class='card')
+          div(class='info')
+            h2 #{message.title}
+            p #{message.message} 
+            p 
+              strong by *********
     else 
       p no messages
 
