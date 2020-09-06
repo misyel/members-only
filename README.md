@@ -24,13 +24,13 @@ npm run start
 
 # features
 
-Create an account with a username and password & login
+**Create an account with a username and password & login**
 
 * passwords are stored after hashing with bcryptjs
 * passportjs is used to handle authorizations
 * form data is sanitized & validated using express-validator
 
-To gain access to a specific role, enter the passwords below after logging in:
+**To gain access to a specific role, enter the passwords below after logging in:**
 
 | Role   | Password    |
 | -------| ------------|
