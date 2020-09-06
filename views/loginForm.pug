@@ -11,9 +11,10 @@ block content
             fieldset
                 label(for='password') password:
                 input(name='password' type='password' required=true placeholder='password')
-            button(type='submit') submit
+            div(class='buttons')
+                button(type='submit') submit
+            if errors 
+                ul(class='errors')
+                    for error in errors
+                        li!= error.msg
         
-    if errors 
-        ul
-            for error in errors
-                li!= error.msg    

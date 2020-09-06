@@ -11,11 +11,12 @@ block content
                 input(name='title' id='title' type='text' required=true value=(underfined===message ? '': message.title))
             fieldset
                 label(for='message') message:
-                input(name='message' id='message' type='text' required=true value=(underfined===message ? '': message.message))
-            button(type='submit') submit
-
+                textarea(name='message' id='message' type='text' required=true value=(underfined===message ? '': message.message))
+            div(class='buttons')
+                button(type='submit') submit
+            if errors 
+                ul(class='errors')
+                    for error in errors
+                        li!= error.msg
         
-        if errors 
-            ul
-                for error in errors
-                    li!= error.msg 
+        

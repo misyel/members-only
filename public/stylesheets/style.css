@@ -1,8 +1,10 @@
 
 /*general styling*/
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f1d1d1;
+  font-family: 'Raleway', Sans-Serif;
+  background-color: #c8d5b9;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -57,7 +59,6 @@ ul{
 button{
   background: none;
   border: none;
-  font-weight: bold;
 }
 
 button:hover{
@@ -68,9 +69,10 @@ button:hover{
 @media screen and (min-width: 768px){
   nav{
     display: flex;
+    background: #c8d5b9;
     justify-content: space-between;
     padding-top: 1em;
-    padding-bottom: 0;
+    padding-bottom: 1em;
     height: 30px;
     align-items: center;
   }
@@ -80,6 +82,12 @@ button:hover{
     margin-right: 20px;
     flex-direction: row;
     justify-content: flex-end;
+  }
+
+  .logo{
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 20px;
   }
 
   .navBar li{
@@ -104,16 +112,16 @@ button:hover{
 }
 
 input, textarea{
-  font-family: Arial, Helvetica, sans-serif;
   width: 95%;
   border: 1px solid #ccc;
+  border-radius: 10px;
   background: #FFF;
   margin: 0 0 5px;
   padding: 10px;
 }
 
 .inputForm{
-  background: #f3e1e1;
+  background: #eeebeb;
   border-radius: 10px;
   padding: 25px;
   margin: 150px 0;
@@ -159,6 +167,9 @@ textarea{
 .inputForm button:hover{
   color: grey;
 }
+.buttons{
+  text-align: center;
+}
 
 /*card styling*/
 
@@ -166,7 +177,7 @@ textarea{
   max-width: 100%;
   margin: 0 auto;
   padding: 0 1.2em;
-  padding-top: 1em;
+  padding-top: 2em;
 }
 
 section {
@@ -174,9 +185,9 @@ section {
 }
 
 .card {
-  background-color: #f3e1e1;
-  border-radius: 20px;
-  box-shadow: 2px 1px 0px 0px #f3e1e1;
+  background-color: #eeebeb;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .info {
@@ -201,10 +212,17 @@ section {
 }
 
 .delete{
-  padding: 1em 0;
+  padding: 0.3em 0;
+  font-size: 1em;
+  color: #e8505b;
 }
 
 .title{
-  padding: 0.5em 0;
   text-align: center;
+  color: #000000;
+}
+
+.errors{
+  list-style: circle; 
+  color: #e8505b;
 }

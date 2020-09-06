@@ -20,9 +20,9 @@ block content
             fieldset   
                 label(for='password') confirm password:
                 input(name='confirmPassword' type='password' required=true placeholder='confirm password')
+            div(class='buttons')
                 button(type='submit') submit
-
-        if errors 
-            ul
-                for error in errors
-                    li!= error.msg
+            if errors 
+                ul(class='errors')
+                    for error in errors
+                        li!= error.msg

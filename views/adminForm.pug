@@ -9,8 +9,9 @@ block content
             fieldset
                 label(for='adminPassword') secret password:
                 input(name='adminPassword' id='adminPassword' placeholder='secret password' required=true type='password')
-            button(type='submit') submit
-    
-    if errors
-        for error in errors
-            p #{error.msg}
+            div(class='buttons')
+                button(type='submit') submit
+            if errors 
+                ul(class='errors')
+                    for error in errors
+                        li!= error.msg
