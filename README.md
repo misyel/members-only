@@ -1,5 +1,5 @@
 # members-only
-members-only is an anonymous message board with different membership tiers created for the odin project cirriculum. 
+members-only is an anonymous message board with three different membership tiers
 
 # use
 
@@ -22,22 +22,26 @@ npm run start
 
 # features
 
-Sample accounts:
+Create an account with a username and password & login
 
-| Username  | Password |
-| ------------- | ------------- |
-| admin  | admin  |
-| member  | member  |
+To gain access to a specific role, enter the passwords below after logging in:
+
+| Role   | Password    |
+| -------| ------------|
+| admin  | admin       |
+| member | membership  |
 
 * admins can delete posts, create posts, and see who wrote the posts
 * members can crete posts, and see who wrote the posts
 * non-members can only see posts
 
-To gain access to a specific role, enter the passwords below:
+Sample accounts:
 
-| Role | Password |
-| ------------- | ------------- |
-| admin  | admin  |
-| member  | membership  |
+| Username  | Password | Role     |
+| --------- | -------- | -------- |
+| admin     | admin    | admin    |
+| member    | member   | member   |
+
+
 
 
